@@ -57,7 +57,7 @@ const SidebarContainer = styled.div`
     font-size: 2rem;
     background: transparent;
     border-color: transparent;
-    color: var(--clr-primary-2);
+    color: var(--clr-primary-3);
     transition: var(--transition);
     cursor: pointer;
     margin-top: 0.2rem;

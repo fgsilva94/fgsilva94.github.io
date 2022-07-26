@@ -62,11 +62,15 @@ const NavContainer = styled.nav`
   .nav-toggle {
     background: transparent;
     border: transparent;
-    color: var(--clr-primary-4);
+    color: var(--clr-primary-3);
     cursor: pointer;
     svg {
       font-size: 2rem;
     }
+  }
+
+  .nav-toggle:hover {
+    color: var(--clr-primary-4);
   }
 
   .nav-links {
@@ -99,7 +103,7 @@ const NavContainer = styled.nav`
         letter-spacing: var(--spacing);
         padding: 0.5rem;
         &:hover {
-          border-bottom: 2px solid var(--clr-primary-4);
+          border-bottom: 2px solid var(--clr-primary-3);
         }
       }
     }
