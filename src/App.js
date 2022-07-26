@@ -1,12 +1,14 @@
+import { Routes, Route } from "react-router-dom";
+import { Error, Home, InConstruction } from "./pages";
+
 function App() {
   return (
     <>
-      <div className="section section-center">
-        <div className="title">
-          <h1>under construction, come back in a few days!</h1>
-          <div className="underline"></div>
-        </div>
-      </div>
+      <Routes>
+        <Route exact path="/" element={<InConstruction />} />
+        <Route exact path="/v1" element={<Home />} />
+        <Route exact path="*" element={<Error />} />
+      </Routes>
     </>
   );
 }
