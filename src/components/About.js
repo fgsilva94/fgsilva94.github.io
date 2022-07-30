@@ -26,8 +26,8 @@ const About = () => {
           repellendus, recusandae tempora accusantium itaque nihil aliquid
           possimus magnam ex aspernatur molestiae assumenda commodi quod
           numquam, ipsum animi maxime eum. Recusandae quos nesciunt molestias
-          doloribus, eaque quas placeat aliquam ducimus veniam voluptatum minima
-          vero, ipsum ex accusamus, facere tenetur dolorem!
+          doloribus, eaque quas placeat aliquam ducimus veniam voluptatum
+          minima!
         </p>
       </article>
     </Wrapper>
