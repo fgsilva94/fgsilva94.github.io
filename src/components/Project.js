@@ -11,7 +11,7 @@ const Project = () => {
         <img src={projectImg} alt="project img" />
       </section>
       <section className="info">
-        <section className="project-title">
+        <section className="title">
           <h3>Project title</h3>
           <div className="underline"></div>
         </section>
@@ -48,7 +48,7 @@ const Wrapper = styled.article`
   display: grid;
   margin-bottom: 4rem;
 
-  .project-title {
+  .title {
     margin-bottom: 1.5rem;
     text-align: left;
   }
@@ -61,8 +61,8 @@ const Wrapper = styled.article`
   }
 
   .underline {
-    width: 6rem;
-    height: 0.15rem;
+    width: 5rem;
+    height: 0.175rem;
     background: var(--clr-primary-3);
     margin-left: 0;
     margin-right: auto;
@@ -134,6 +134,7 @@ const Wrapper = styled.article`
     margin-right: 0.75rem;
     transition: var(--transition);
   }
+
   .icon:hover {
     color: var(--clr-primary-4);
   }

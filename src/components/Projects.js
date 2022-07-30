@@ -19,8 +19,8 @@ const Projects = () => {
 };
 
 const Wrapper = styled.section`
-  .title {
-    margin-bottom: 5rem;
+  article:last-child {
+    margin-bottom: 0;
   }
 `;
 

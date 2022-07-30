@@ -38,12 +38,17 @@ const Wrapper = styled.section`
     font-size: 1rem;
   }
 
+  h1::first-letter {
+    color: var(--clr-primary-3);
+  }
+
   @media (min-width: 992px) {
     height: calc(100vh - 5rem);
     background: linear-gradient(
-        rgba(22, 26, 29, 0.9),
         rgba(22, 26, 29, 0.7),
-        rgba(22, 26, 29, 0.9)
+        rgba(22, 26, 29, 0.9),
+        rgba(22, 26, 29, 0.9),
+        rgba(22, 26, 29, 0.7)
       ),
       url(${heroBcg}) center/cover no-repeat;
 
