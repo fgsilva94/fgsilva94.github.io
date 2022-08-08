@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Contact = () => {
   return (
-    <Wrapper className="section">
+    <Wrapper id="contact" className="section">
       <section className="title">
         <h2>contact me</h2>
         <div className="underline"></div>
@@ -26,7 +26,6 @@ const Contact = () => {
 
 const Wrapper = styled.section`
   .section-center {
-    width: 50vw;
     text-align: center;
   }
 
@@ -34,8 +33,16 @@ const Wrapper = styled.section`
     margin-bottom: 5rem;
   }
 
-  .btn {
-    text-align: center;
+  @media (min-width: 768px) {
+    .section-center {
+      width: 80vw;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .section-center {
+      width: 60vw;
+    }
   }
 `;
 

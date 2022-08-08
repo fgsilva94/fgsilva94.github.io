@@ -1,40 +1,59 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "../context";
+import { links } from "../utils/constants";
 
 const Navbar = () => {
   const { openSidebar } = useGlobalContext();
+  const [hide, setHide] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currScrollPos = window.scrollY;
+
+      if (currScrollPos === 0) {
+        setScrolled(false);
+      } else {
+        setScrolled(true);
+      }
+
+      if (prevScrollPos > currScrollPos) {
+        setHide(false);
+      } else {
+        setHide(true);
+      }
+
+      setPrevScrollPos(currScrollPos);
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [prevScrollPos]);
 
   return (
-    <NavContainer>
-      <div className="nav-center">
-        <div className="nav-header">
-          <button type="button" className="nav-toggle" onClick={openSidebar}>
+    <NavContainer
+      className={
+        scrolled ? (hide ? "nav-scrolled nav-hide" : "nav-scrolled") : ""
+      }
+    >
+      <div className="center">
+        <div className="header">
+          <button type="button" className="toggle" onClick={openSidebar}>
             <FaBars />
           </button>
         </div>
-        <ul className="nav-links">
-          <li>
-            <a href="/" onClick={(e) => e.preventDefault()}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/" onClick={(e) => e.preventDefault()}>
-              About
-            </a>
-          </li>
-          <li>
-            <a href="/" onClick={(e) => e.preventDefault()}>
-              Projects
-            </a>
-          </li>
-          <li>
-            <a href="/" onClick={(e) => e.preventDefault()}>
-              Contact
-            </a>
-          </li>
+        <ul className="links">
+          {links.map(({ id, href, text }) => {
+            return (
+              <li key={id}>
+                <a href={href}>{text}</a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </NavContainer>
@@ -46,49 +65,54 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  background: var(--clr-off-black);
+  transition: var(--transition);
+  width: 100%;
+  z-index: 9;
 
-  .nav-center {
+  .center {
     width: 90vw;
     margin: 0 auto;
     max-width: var(--max-width);
   }
 
-  .nav-header {
+  .header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
   }
 
-  .nav-toggle {
+  .toggle {
     background: transparent;
     border: transparent;
     color: var(--clr-primary-3);
     cursor: pointer;
+    transition: var(--transition);
     svg {
       font-size: 2rem;
     }
+
+    &:hover {
+      color: var(--clr-primary-4);
+    }
   }
 
-  .nav-toggle:hover {
-    color: var(--clr-primary-4);
-  }
-
-  .nav-links {
+  .links {
     display: none;
   }
 
   @media (min-width: 992px) {
-    .nav-toggle {
+    .toggle {
       display: none;
     }
 
-    .nav-center {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
+    .center {
       align-items: center;
     }
 
-    .nav-links {
+    .links {
       display: flex;
       justify-content: center;
 
@@ -97,12 +121,15 @@ const NavContainer = styled.nav`
       }
 
       a {
-        color: var(--clr-grey-1);
+        line-height: 0;
+        color: var(--clr-grey-2);
         font-size: 1rem;
         text-transform: capitalize;
         letter-spacing: var(--spacing);
         padding: 0.5rem;
+
         &:hover {
+          color: var(--clr-off-white);
           border-bottom: 2px solid var(--clr-primary-3);
         }
       }

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "../context";
+import { links } from "../utils/constants";
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useGlobalContext();
@@ -11,32 +12,21 @@ const Sidebar = () => {
       <aside
         className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}
       >
-        <div className="sidebar-header">
+        <div className="header">
           <button type="button" className="close-btn" onClick={closeSidebar}>
             <FaTimes />
           </button>
         </div>
         <ul className="links">
-          <li>
-            <a href="/" onClick={(e) => e.preventDefault()}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/" onClick={(e) => e.preventDefault()}>
-              About
-            </a>
-          </li>
-          <li>
-            <a href="/" onClick={(e) => e.preventDefault()}>
-              Projects
-            </a>
-          </li>
-          <li>
-            <a href="/" onClick={(e) => e.preventDefault()}>
-              Contact
-            </a>
-          </li>
+          {links.map(({ id, href, text }) => {
+            return (
+              <li key={id}>
+                <a href={href} onClick={closeSidebar}>
+                  {text}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </aside>
     </SidebarContainer>
@@ -46,7 +36,7 @@ const Sidebar = () => {
 const SidebarContainer = styled.div`
   text-align: center;
 
-  .sidebar-header {
+  .header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -61,31 +51,30 @@ const SidebarContainer = styled.div`
     transition: var(--transition);
     cursor: pointer;
     margin-top: 0.2rem;
-  }
 
-  .close-btn:hover {
-    color: var(--clr-primary-4);
+    &:hover {
+      color: var(--clr-primary-4);
+    }
   }
 
   .links {
     margin-bottom: 2rem;
-  }
 
-  .links a {
-    display: block;
-    text-align: left;
-    font-size: 1rem;
-    text-transform: capitalize;
-    padding: 1rem 1.5rem;
-    color: var(--clr-grey-1);
-    transition: var(--transition);
-    letter-spacing: var(--spacing);
-  }
+    a {
+      display: block;
+      text-align: left;
+      font-size: 1rem;
+      text-transform: capitalize;
+      padding: 1rem 1.5rem;
+      color: var(--clr-grey-1);
+      transition: var(--transition);
+      letter-spacing: var(--spacing);
 
-  .links a:hover {
-    padding: 1rem 1.5rem;
-    padding-left: 2rem;
-    color: var(--clr-grey-2);
+      &:hover {
+        padding-left: 2.5rem;
+        color: var(--clr-grey-2);
+      }
+    }
   }
 
   .sidebar {

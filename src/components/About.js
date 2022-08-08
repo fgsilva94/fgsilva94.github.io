@@ -4,7 +4,7 @@ import aboutImg from "../assets/about-img.jpg";
 
 const About = () => {
   return (
-    <Wrapper className="section section-center">
+    <Wrapper id="about" className="section section-center">
       <article className="about-img">
         <img src={aboutImg} alt="about img" />
       </article>
@@ -26,9 +26,14 @@ const About = () => {
           repellendus, recusandae tempora accusantium itaque nihil aliquid
           possimus magnam ex aspernatur molestiae assumenda commodi quod
           numquam, ipsum animi maxime eum. Recusandae quos nesciunt molestias
-          doloribus, eaque quas placeat aliquam ducimus veniam voluptatum
-          minima!
+          doloribus, eaque quas placeat aliquam ducimus veniam voluptatum minima
+          vero, ipsum ex accusamus, facere tenetur dolorem!
         </p>
+        <div className="stack">
+          <span>react.js</span>
+          <span>express.js</span>
+          <span>spring boot</span>
+        </div>
       </article>
     </Wrapper>
   );
@@ -39,12 +44,13 @@ const Wrapper = styled.section`
   gap: 4rem;
 
   .about-img {
+    max-height: 30rem;
     display: block;
     justify-self: center;
   }
 
   img {
-    max-height: 30rem;
+    height: 100%;
     position: relative;
     border-radius: var(--radius);
     -o-object-fit: cover;

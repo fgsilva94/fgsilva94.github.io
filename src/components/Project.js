@@ -112,22 +112,6 @@ const Wrapper = styled.article`
     border-radius: var(--radius);
   }
 
-  .stack {
-    margin-bottom: 1rem;
-  }
-
-  .stack span {
-    display: inline-block;
-    background: rgba(11, 9, 10, 0.3);
-    color: var(--clr-grey-2);
-    margin: 0.25rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: var(--radius);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.85rem;
-  }
-
   .icon {
     color: var(--clr-primary-3);
     font-size: 1.5rem;

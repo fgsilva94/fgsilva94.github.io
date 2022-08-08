@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Hero = () => {
   return (
-    <Wrapper>
+    <Wrapper id="home">
       <section className="section-center">
         <article className="content">
           <h1>Lorem ipsum.</h1>
@@ -14,7 +14,9 @@ const Hero = () => {
             ducimus soluta quibusdam. Natus iure vitae eveniet dolore eaque sint
             non.
           </p>
-          <button className="btn">resume</button>
+          <button type="button" className="btn">
+            contact me
+          </button>
         </article>
       </section>
     </Wrapper>
@@ -25,6 +27,7 @@ const Wrapper = styled.section`
   .section-center {
     display: flex;
     width: 80vw;
+    padding-top: 5rem;
     min-height: 60vh;
     align-items: center;
     justify-content: flex-start;
@@ -38,12 +41,8 @@ const Wrapper = styled.section`
     font-size: 1rem;
   }
 
-  h1::first-letter {
-    color: var(--clr-primary-3);
-  }
-
   @media (min-width: 992px) {
-    height: calc(100vh - 5rem);
+    height: 100vh;
     background: linear-gradient(
         rgba(22, 26, 29, 0.7),
         rgba(22, 26, 29, 0.9),
