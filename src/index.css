@@ -139,7 +139,7 @@ p {
 
 /* section */
 .section {
-  padding: 2.5rem 0;
+  padding: 4rem 0;
 }
 
 .section-center {
@@ -149,10 +149,6 @@ p {
 }
 
 @media screen and (min-width: 992px) {
-  .section {
-    padding: 5rem 0;
-  }
-
   .section-center {
     width: 95vw;
   }
@@ -220,6 +216,8 @@ p {
   min-height: calc(100vh - (20vh + 10rem));
 }
 
+/* stack section */
+
 .stack {
   margin-bottom: 1rem;
 }
@@ -235,6 +233,8 @@ p {
   letter-spacing: 2px;
   font-size: 0.85rem;
 }
+
+/* Navbar */
 
 .nav-hide {
   top: -5rem !important;
