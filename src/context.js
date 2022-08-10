@@ -1,9 +1,12 @@
-import React, { useContext, useReducer } from "react";
+import React, { useCallback, useContext, useReducer } from "react";
 import reducer from "./reducer";
-import { SIDEBAR_OPEN, SIDEBAR_CLOSE } from "./actions";
+import { SIDEBAR_OPEN, SIDEBAR_CLOSE, SET_PREV_PAGE_SCROLL } from "./actions";
 
 const initialState = {
   isSidebarOpen: false,
+  isPageScrolled: false,
+  isNavbarHide: false,
+  prevPageScroll: 0,
 };
 
 const AppContext = React.createContext();
@@ -19,8 +22,14 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SIDEBAR_CLOSE });
   };
 
+  const setPrevPageScroll = useCallback((currPageScroll) => {
+    dispatch({ type: SET_PREV_PAGE_SCROLL, payload: { currPageScroll } });
+  }, []);
+
   return (
-    <AppContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+    <AppContext.Provider
+      value={{ ...state, openSidebar, closeSidebar, setPrevPageScroll }}
+    >
       {children}
     </AppContext.Provider>
   );

@@ -1,43 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "../context";
 import { links } from "../utils/constants";
 
 const Navbar = () => {
-  const { openSidebar } = useGlobalContext();
-  const [hide, setHide] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const { isNavbarHide, isPageScrolled, openSidebar, setPrevPageScroll } =
+    useGlobalContext();
 
   useEffect(() => {
     const onScroll = () => {
       const currScrollPos = window.scrollY;
 
-      if (currScrollPos === 0) {
-        setScrolled(false);
-      } else {
-        setScrolled(true);
-      }
-
-      if (prevScrollPos > currScrollPos) {
-        setHide(false);
-      } else {
-        setHide(true);
-      }
-
-      setPrevScrollPos(currScrollPos);
+      setPrevPageScroll(currScrollPos);
     };
 
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, [prevScrollPos]);
+  }, [setPrevPageScroll]);
 
   return (
     <NavContainer
       className={
-        scrolled ? (hide ? "nav-scrolled nav-hide" : "nav-scrolled") : ""
+        isPageScrolled
+          ? isNavbarHide
+            ? "nav-scrolled nav-hide"
+            : "nav-scrolled"
+          : ""
       }
     >
       <div className="center">
@@ -95,7 +85,7 @@ const NavContainer = styled.nav`
     }
 
     &:hover {
-      color: var(--clr-primary-4);
+      transform: rotateZ(90deg);
     }
   }
 

@@ -53,7 +53,7 @@ const SidebarContainer = styled.div`
     margin-top: 0.2rem;
 
     &:hover {
-      color: var(--clr-primary-4);
+      transform: scale(1.2);
     }
   }
 
